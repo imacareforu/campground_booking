@@ -10,30 +10,26 @@ import Campground from "@/db/models/Campground"
 
 export default async function ManagePage() {
 
-    const addCar = async (addCarForm:FormData) => {
+    const addCampground = async (addCampGroundForm:FormData) => {
         'use server'
-        const name = addCarForm.get('name')
-        const desc = addCarForm.get('address')
-        const pic = addCarForm.get('picture')
-        const seats = addCarForm.get('seats')
-        const doors = addCarForm.get('doors')
-        const largebags = addCarForm.get('largebags')
-        const smallbags = addCarForm.get('smallbags')
-        const automatic = addCarForm.get('automatic')
-        const dayRate = addCarForm.get('dayRate')
+        const name = addCampGroundForm.get('name')
+        const address = addCampGroundForm.get('address')
+        const district = addCampGroundForm.get('district')
+        const province = addCampGroundForm.get('province')
+        const postalcode = addCampGroundForm.get('postalcode')
+        const tel = addCampGroundForm.get('tel')
+        const picture = addCampGroundForm.get('picture')
 
         try{
             await dbConnect()
             await Campground.create({
-                'model':model,
-                'description':desc,
-                'picture':pic,
-                'seats':seats,
-                'doors':doors,
-                'largebags':largebags,
-                'smallbags':smallbags,
-                'automatic': automatic? true:false,
-                'dayRate':dayRate
+                "name": name,
+                "address": address,
+                "district":district,
+                "province": province,
+                "postalcode": postalcode,
+                "tel": tel,
+                "picture": picture
             })
         }
         catch(error) {console.log(error)}
@@ -60,31 +56,16 @@ export default async function ManagePage() {
 
 
     return (
-        <form className="bg-sky-100 p-3 rounded-lg" action={addCar} >
-            <div className="text-xl text-left text-blue-700">Create Car Model</div>
-            <InputAndLabel label="Model" placeHolder="Car Model" id='model' />
-            <InputAndLabel label="Description" placeHolder="Car Description" id='desc' />
-            <InputAndLabel label="Picture" placeHolder="URL" id='picture' />
-            <div className="flex items-center w-full my-2 px-3">
-                <label className="w-auto block text-gray-700 pr-4" htmlFor="seats">Seats</label>
-                <input type='number' required id='seats' name='seats' placeholder="4" min={0} max={50}
-                    className="bg-white border-2 border-gray-200 rounded-md w-auto p-2 text-gray-700 focus:border-blue-400 focus:outline-none" />
-                <label className="w-auto block text-gray-700 pr-4 ml-4" htmlFor="doors">Doors</label>
-                <input type='number' required id='doors' name='doors' placeholder="4" min={0} max={8}
-                    className="bg-white border-2 border-gray-200 rounded-md w-auto p-2 text-gray-700 focus:border-blue-400 focus:outline-none" />
-                <input type='checkbox' name='automatic' id='automatic' className="mx-3" />
-                <label>Auto</label>
-            </div>
-            <div className="flex items-center w-full my-2 px-3">
-                <label className="w-auto block text-gray-700 pr-4" htmlFor="largebags">Large Bags</label>
-                <input type='number' required id='largebags' name='largebags' placeholder="4" min={0} max={10}
-                    className="bg-white border-2 border-gray-200 rounded-md w-auto p-2 text-gray-700 focus:border-blue-400 focus:outline-none" />
-                <label className="w-auto block text-gray-700 pr-4 ml-4" htmlFor="smallbags">Small Bags</label>
-                <input type='number' required id='smallbags' name='smallbags' placeholder="4" min={0} max={10}
-                    className="bg-white border-2 border-gray-200 rounded-md w-auto p-2 text-gray-700 focus:border-blue-400 focus:outline-none" />
-            </div>
-            <InputAndLabel label='Rate' placeHolder="Daily Rate (including insurance" id='dayRate' />
-            <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white p-2 mb-5 rounded">Add New Car</button>
+        <form className="bg-sky-100 p-3 rounded-lg" action={addCampground} >
+            <div className="text-xl text-left text-blue-700">Create Campground</div>
+            <InputAndLabel label="Name" placeHolder="Campground Name" id='name' />
+            <InputAndLabel label="Address" placeHolder="Campground Address" id='address' />
+            <InputAndLabel label="District" placeHolder="District" id='district' />
+            <InputAndLabel label="Province" placeHolder="Province" id='province'/>
+            <InputAndLabel label="Postal Code" placeHolder="Postal Code" id='postalcode'/>
+            <InputAndLabel label='Tel' placeHolder="Tel" id='tel' />
+            <InputAndLabel label="Picture" placeHolder="Picture" id='picture' />
+            <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white p-2 mb-5 rounded">Add New Campground</button>
         </form>
     )
 }

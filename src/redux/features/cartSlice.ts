@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ReservationItem } from "../../../inteface";
+import { BookingItem } from "../../../interface";
 
-type CartState = {carItems:ReservationItem[]}
+type CartState = {bookingItems:BookingItem[]}
 
-const initialState:CartState = {carItems:[]}
+const initialState:CartState = {bookingItems:[]}
 
 export const cartSlice = createSlice({
     name:"cart",
     initialState,
     reducers : {
-        addReservation: (state,action:PayloadAction<ReservationItem>) => {
+        addReservation: (state,action:PayloadAction<BookingItem>) => {
             state.carItems.push(action.payload)
         },
-        removeReservation: (state,action:PayloadAction<ReservationItem>) => {
+        removeReservation: (state,action:PayloadAction<BookingItem>) => {
             const remainItems = state.carItems.filter(obj => {
-                return ((obj.carModel!==action.payload.carModel) || (obj.pickupDate!==action.payload.pickupDate) || (obj.returnDate!==action.payload.returnDate))
+                return (obj.userRole=='admin'? true: obj.user==action.payload.user)
             })
 
             state.carItems = remainItems

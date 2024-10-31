@@ -4,26 +4,31 @@ import Image from 'next/image';
 import TopMenuItem from './TopMenuItem';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Link from "next/link";
 
 export default function TopMenu() {
     const router = useRouter()
     const {data:session} = useSession()
 
     return (
-        <div className='h-12 fixed bg-slate-50 flex z-30 inset-0 w-full flex-row'>
-            <Image src={'/img/logo.jpg'} onClick={()=>router.replace('/')} className='h-full w-auto' alt='logo' width={0} height={0} sizes="100vh"/>
+        <div className='h-20 fixed bg-neutral-700 flex z-30 inset-0 w-full flex-row opacity-95'>
+            <Link href='/' className='w-28 text-center mt-auto mb-auto font-sans text-lg text-white ml-4'>
+            <Image src={'/img/logo.png'} className='h-auto w-auto max-h-20' alt='logo' width={0} height={0} sizes="100vh"/>
+            </Link>
             <div className='flex flex-row w-1/2'>
                 <TopMenuItem title='Select Car' pageRef='/car'/>
                 <TopMenuItem title='Reservations' pageRef='/reservations'></TopMenuItem>
+                <TopMenuItem title='Cart' pageRef='/cart' />
                 <TopMenuItem title='About' pageRef='/about'></TopMenuItem>
             </div>
             <div className='w-1/2 flex flex-row-reverse'>
                 {
                 session? <TopMenuItem title='Sign-out' pageRef='/api/auth/signout'/>
-                :<TopMenuItem title='Sign-in' pageRef='/api/auth/signin'/>
+                : <TopMenuItem title='Register' pageRef='/register'/>
                 }
-                <TopMenuItem title='Register' pageRef='/register'/>
-                <TopMenuItem title='Cart' pageRef='/cart'/>
+                {
+                    session ? null : <TopMenuItem title='Sign-in' pageRef='/api/auth/signin' />
+                }
             </div>
         </div>
     );

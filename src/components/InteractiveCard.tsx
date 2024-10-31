@@ -1,6 +1,6 @@
 'use client'
 
-export default function InteractiveCard({children,carName} : {children : React.ReactNode,carName:string}) {
+export default function InteractiveCard({children} : {children : React.ReactNode}) {
 
     function onMouseOut(event:React.BaseSyntheticEvent) {
         event.currentTarget.classList.remove('shadow-2xl')

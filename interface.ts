@@ -1,27 +1,25 @@
-interface HospitalItem {
-    _id: string,
+export interface BookingItem {
+    bookingDate:string,
+    checkoutDate:string,
+    user:string,
+    campground:string,
+    createAt:string
+}
+
+export interface CarJson {
+  success: boolean,
+  count: number,
+  pagination: Object,
+  data: CampgroundItem[]
+}
+
+export interface CampgroundItem {
+    _id : string
     name: string,
     address: string,
     district: string,
     province: string,
     postalcode: string,
     tel: string,
-    picture: string,
-    __v: number,
-    id: string
-  }
-  
-  interface HospitalJson {
-    success: boolean,
-    count: number,
-    pagination: Object,
-    data: HospitalItem[]
-  }
-
-  interface BookingItem {
-    name: string;
-    surname: string;
-    id: string;
-    hospital: string;
-    bookDate: string;
-  }
+    picture: string
+}

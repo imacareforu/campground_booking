@@ -53,5 +53,5 @@ CampgroundSchema.virtual("bookings", {
 });
 //module.exports = mongoose.model("Campground", CampgroundSchema);
 
-const Campground = mongoose.models.Campground || mongoose.model("Campground",CargroundSchema)
+const Campground = mongoose.models.Campground || mongoose.model("Campground",CampgroundSchema)
 export default Campground
