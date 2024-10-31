@@ -1,5 +1,5 @@
 export default async function userRegister(name:string,tel:string,email:string,password:string) {
-    const response = await fetch("https://car-rental-app-backend-red.vercel.app:443/api/v1/auth/register",{
+    const response = await fetch("https://campground-backend-kappa.vercel.app:443/api/v1/auth/register",{
         method: "POST",
         headers:{
             "Content-Type":"application/json"

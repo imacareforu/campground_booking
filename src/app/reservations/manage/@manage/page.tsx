@@ -6,14 +6,14 @@ import InputFileUpload from "@/components/UploadButton"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import { dbConnect } from "@/db/dbConnect"
-import Car from "@/db/models/Car"
+import Campground from "@/db/models/Campground"
 
 export default async function ManagePage() {
 
     const addCar = async (addCarForm:FormData) => {
         'use server'
-        const model = addCarForm.get('model')
-        const desc = addCarForm.get('desc')
+        const name = addCarForm.get('name')
+        const desc = addCarForm.get('address')
         const pic = addCarForm.get('picture')
         const seats = addCarForm.get('seats')
         const doors = addCarForm.get('doors')
@@ -24,7 +24,7 @@ export default async function ManagePage() {
 
         try{
             await dbConnect()
-            await Car.create({
+            await Campground.create({
                 'model':model,
                 'description':desc,
                 'picture':pic,

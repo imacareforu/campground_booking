@@ -1,13 +1,6 @@
 import { authOption } from "@/app/api/auth/[...nextauth]/AuthOption"
-import InputAndLabel from "@/components/InputAndLabel"
-import { dbConnect } from "@/db/dbConnect"
 import getUserProfile from "@/libs/getUserProfile"
-import { FormControl, FormHelperText, Input, InputLabel, TextField } from "@mui/material"
 import { getServerSession } from "next-auth"
-import Car from '@/db/models/Car'
-import { revalidateTag } from "next/cache"
-import { redirect } from "next/navigation"
-import InputFileUpload from "@/components/UploadButton"
 
 export default async function DashboardPage() {
 
