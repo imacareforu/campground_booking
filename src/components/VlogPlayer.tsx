@@ -14,6 +14,6 @@ export default function VlogPlayer({vdoSrc,isPlaying} : {vdoSrc:string,isPlaying
     },[isPlaying])
 
     return(
-        <video className="w-3/5 rounded-lg" src={vdoSrc} ref={vdoRef} controls loop muted/>
+        <video className="w-3/5" src={vdoSrc} ref={vdoRef} controls loop muted/>
     )
 }
