@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import InteractiveCard from './InteractiveCard';
 
-export default function ProductCard({campgroundName, imgSrc} : {campgeoundName:string , imgSrc:string}) {
+export default function ProductCard({campgroundName, imgSrc} : {campgroundName:string , imgSrc:string}) {
 
     return(
         <InteractiveCard>

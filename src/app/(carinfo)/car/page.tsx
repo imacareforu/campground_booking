@@ -8,7 +8,7 @@ export default function Car() {
 
     return(
         <main className='text-center p-5 bg-white'>
-            <h1 className='text-x font-medium'>Select yout partner, Yeah</h1>
+            <p className='text-[60px] font-bold font-sans'>Choose Your Outdoor Adventure</p>
             <Suspense fallback={<p>Loading... <LinearProgress/></p>}>
                 <CampgroundCatalog campgroundPromise={campgrounds}/>
             </Suspense>

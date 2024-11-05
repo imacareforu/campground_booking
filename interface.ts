@@ -2,11 +2,10 @@ export interface BookingItem {
     bookingDate:string,
     checkoutDate:string,
     user:string,
-    campground:string,
-    createAt:string
+    campground:string
 }
 
-export interface CarJson {
+export interface CampgroundJson {
   success: boolean,
   count: number,
   pagination: Object,
