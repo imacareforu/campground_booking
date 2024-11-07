@@ -1,5 +1,3 @@
-'use client'
-
 import LacationDateReserve from "@/components/LoactionDateReserve";
 import { AppDispatch } from "@/redux/store";
 import dayjs, { Dayjs } from "dayjs";
