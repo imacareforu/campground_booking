@@ -10,7 +10,7 @@ export default function BookingCart() {
     
     const bookingItems = useAppSelector((state)=>state.cartSlice.bookingItems)
     const dispatch = useDispatch<AppDispatch>()
-
+    console.log(bookingItems)
     return (
         <>
         <p className="text-center font-bold text-2xl p-8">Here your Cart</p>

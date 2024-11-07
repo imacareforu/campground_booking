@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./features/cartSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
-import { WebStorage } from "redux-persist/lib/types";
+import { WebStorage ,persistReducer} from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import { FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE } from "redux-persist";
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from "redux-persist";
+
 
 function createPersistStorage(): WebStorage {
     const isServer = typeof window === 'undefined'
@@ -37,6 +38,6 @@ export const store = configureStore({
     })
 })
 
-type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 export const useAppSelector:TypedUseSelectorHook<RootState> = useSelector

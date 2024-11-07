@@ -17,7 +17,7 @@ export default async function CarDetailPage({params} : {params:{cid:string}}) {
                     <div className="text-md mx-5">District : {campgroundDetail.data.district}</div>
                     <div className="text-md mx-5">Province : {campgroundDetail.data.province}</div>
                     <div className="text-md mx-5">Postal Code : {campgroundDetail.data.postalcode}</div>
-                    <Button variant="contained" href={`/reservations?id=${params.cid}&campground=${campgroundDetail.data.name}`} className="w-2/5 min-w-60">Book</Button>
+                    <Button variant="contained" href={`/booking?id=${params.cid}&campground=${campgroundDetail.data.name}`} className="w-2/5 min-w-60">Book</Button>
                 </div>
             </div>
         </main>

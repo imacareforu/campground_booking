@@ -17,7 +17,7 @@ export default function TopMenu() {
             </Link>
             <div className='flex flex-row w-1/2'>
                 <TopMenuItem title='Select Car' pageRef='/camp'/>
-                <TopMenuItem title='Reservations' pageRef='/reservations'></TopMenuItem>
+                <TopMenuItem title='Booking' pageRef='/booking'></TopMenuItem>
                 <TopMenuItem title='Cart' pageRef='/cart' />
                 <TopMenuItem title='About' pageRef='/about'></TopMenuItem>
             </div>
