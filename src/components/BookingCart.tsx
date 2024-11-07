@@ -19,6 +19,7 @@ export default function BookingCart() {
             bookingItems.map((item:BookingItem)=>(
                 <div className="rounded bg-slate-200 px-5 mx-5 py-2 my-2">
                     <div className="text-xl">{item.campground}</div>
+                    <div>{item.user}</div>
                     <div className="text-sm">Booking Date : {item.bookingDate}</div>
                     <div className="text-sm">Checkout Date : {item.checkoutDate}</div>
                     <Button onClick={()=>dispatch(removeBooking(item))} variant='contained'>Remove reservation</Button>

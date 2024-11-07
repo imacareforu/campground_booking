@@ -44,7 +44,7 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
 
     const makeReservation = () => {
 
-        if (cid && campground && bookingDate && checkoutDate) {
+        if (campground && bookingDate && checkoutDate) {
             const booking: BookingItem = {
                 bookingDate: dayjs(bookingDate).format('YYYY/MM/DD'),
                 checkoutDate: dayjs(checkoutDate).format('YYYY/MM/DD'),
@@ -55,7 +55,7 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
             dispatch(addBooking(booking))
         }
 
-        else if (!cid) alert('please select campground!')
+        else if (!campground) alert('please select campground!')
         else if (!bookingDate) alert('please select booking date!')
         else if (!checkoutDate) alert('please select checkout date!')
     }
