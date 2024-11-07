@@ -1,9 +1,10 @@
 import Link from "next/link"
 import CampgroundCard from "@/components/CampgroundCard"
-import { CampgroundItem,CampgroundJson } from "../../interface"
+import { CampgroundItem} from "../../interface"
+import getCampgrounds from "@/libs/getCampgrounds"
 
-export default async function CampgroundCatalog({campgroundPromise}:{campgroundPromise:Promise<CampgroundJson>}) {
-    const campgroundJson = await campgroundPromise
+export default async function CampgroundCatalog() {
+    const campgroundJson = await getCampgrounds()
 
     return(
         <>

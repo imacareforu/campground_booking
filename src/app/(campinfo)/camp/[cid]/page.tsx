@@ -1,10 +1,10 @@
-import getCar from "@/libs/getCar"
+import getCampground from "@/libs/getCampground"
 import { ClassNames } from "@emotion/react"
 import { Button } from "@mui/material"
 import Image from "next/image"
 
 export default async function CarDetailPage({params} : {params:{cid:string}}) {
-    const campgroundDetail = await getCar(params.cid)
+    const campgroundDetail = await getCampground(params.cid)
 
     return(
         <main className="text-center p-5">
