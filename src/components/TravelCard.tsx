@@ -15,7 +15,7 @@ export default function TravelCard() {
             <VlogPlayer vdoSrc="/video/Sunrise.mp4" isPlaying={playing}/>
             <div className="flex flex-col px-4 py-2">
                 <p>Thailand Nature</p>
-                <button onClick={(e)=>{e.stopPropagation();router.push('/car')}}
+                <button onClick={(e)=>{e.stopPropagation();router.push('/camp')}}
             className='z-30 bg-neutral-700 text-white
             m-4 px-5 py-2 rounded-full hover:text-amber-500 focus:shadow-md focus:shadow-neutral-300'>
             Explore Campsites</button>

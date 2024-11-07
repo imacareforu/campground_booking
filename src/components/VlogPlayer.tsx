@@ -4,11 +4,8 @@ import { useRef,useEffect,useState } from "react"
 
 export default function VlogPlayer({vdoSrc,isPlaying} : {vdoSrc:string,isPlaying:boolean}) {
     const vdoRef = useRef<HTMLVideoElement>(null)
-    
-    //useWindowListener("resize",()=>{alert(window.innerWidth)})
 
     useEffect(()=>{
-        // alert("yay")
         if(isPlaying) vdoRef.current?.play()
         else vdoRef.current?.pause()
     },[isPlaying])

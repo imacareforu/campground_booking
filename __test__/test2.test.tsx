@@ -18,7 +18,7 @@ jest.mock("next-auth/react", ()=>({
     }
 }))
 
-describe("ReservationMenu", ()=>{
+describe("TopMenu", ()=>{
     it("should have title", ()=>{
         //Arrange
         render(<TopMenu/>)

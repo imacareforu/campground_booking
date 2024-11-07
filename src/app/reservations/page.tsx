@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { BookingItem } from "../../../interface";
-import { addReservation } from "@/redux/features/cartSlice";
+import { addBooking } from "@/redux/features/cartSlice";
 import TextField from '@mui/material/TextField';
 
 export default function Reservations() {
@@ -33,7 +33,7 @@ export default function Reservations() {
                 campground: campground
             }
 
-            dispatch(addReservation(booking))
+            dispatch(addBooking(booking))
         }
 
         else if(!cid) alert('please select campground!')

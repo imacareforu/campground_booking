@@ -3,18 +3,6 @@ import { render, screen } from "@testing-library/react"
 import Banner from "@/components/Banner";
 import { userEvent } from "@testing-library/user-event"
 
-// describe("ReservationMenu", ()=>{
-//     it("should have title", ()=>{
-//         //Arrange
-//         render(<TopMenu/>)
-//         //Act
-//         const bannerText = screen.getByText("Cart")
-//         //Assert
-//         expect(bannerText).toBeInTheDocument()
-//     })
-// })
-
-// Mock useRouter
 jest.mock('next/navigation', ()=>({
     useRouter() {
         return {
