@@ -79,7 +79,7 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
                                 input={<OutlinedInput label="Campground" />}>
                                 {
                                     campgroundJson.data.map((item: CampgroundItem) => (
-                                        <MenuItem value={item.name}>{item.name}</MenuItem>
+                                        <MenuItem key={item._id} value={item.name}>{item.name}</MenuItem>
                                     ))
                                 }
                             </Select>
