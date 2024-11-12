@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import * as React from 'react';
 import getCampgrounds from "@/libs/getCampgrounds";
 import BookingForm from "@/components/BookingForm";
+import BookingForm2 from "@/components/BookingForm2";
 
 export default async function Reservations() {
 

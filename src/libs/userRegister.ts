@@ -10,7 +10,6 @@ export default async function userRegister(name:string,tel:string,email:string,p
             tel: tel,
             role: "user",
             password: password,
-            createdAt: "2024-10-27",
         })
     })
 

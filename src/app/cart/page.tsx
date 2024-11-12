@@ -1,7 +1,7 @@
-'use client'
 import BookingCart from "@/components/BookingCart"
 
-export default function CartPage() {
+
+export default async function CartPage() {
     return(
         <main>
             <BookingCart/>

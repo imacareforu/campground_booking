@@ -1,8 +1,9 @@
 export interface BookingItem {
+    _id:string,  
     bookingDate:string,
     checkoutDate:string,
     user:string,
-    campground:string
+    campground:CampgroundItem
 }
 
 export interface CampgroundJson {
