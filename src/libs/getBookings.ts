@@ -4,7 +4,7 @@ export default async function getBookings(token:string|undefined) {
         method:"GET",
         headers:{
             authorization: `Bearer ${token}`
-        }
+        },next:{tags:['bookings']}
     })
 
     if(!response.ok) throw new Error("cannot get booking list")

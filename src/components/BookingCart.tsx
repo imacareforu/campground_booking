@@ -10,6 +10,10 @@ import { getServerSession } from "next-auth";
 import { authOption } from "@/app/api/auth/[...nextauth]/AuthOption";
 import getCampground from "@/libs/getCampground";
 import RemoveBookingButton from "./RemoveBookingButton";
+import { useRouter } from "next/navigation";
+import deleteBooking from "@/libs/deleteBooking";
+import { revalidateTag } from "next/cache";
+
 
 export default async function BookingCart() {
     
@@ -22,7 +26,7 @@ export default async function BookingCart() {
         return camp.data.name
     }
     
-
+    
 
     return (
         <>

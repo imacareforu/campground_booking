@@ -4,7 +4,7 @@ export default async function deleteBooking(token:string|undefined, bookingId:st
         headers:{
             "Content-Type":"application/json",
             authorization: `Bearer ${token}`
-        }
+        },next:{tags:['bookings']}
     })
 
     if(!response.ok) throw new Error(`failed to delete booking ${response.status}`)

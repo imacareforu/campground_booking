@@ -57,11 +57,6 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
         else if (!checkoutDate) console.log('please select checkout date!')
         const bd = dayjs(bookingDate, "YYYY-MM-DD").toDate()
         const cd = dayjs(checkoutDate, "YYYY-MM-DD").toDate()
-        console.log(token)
-        console.log(bd)
-        console.log(cd)
-        console.log(user)
-        console.log(cid)
         if (campground && bookingDate && checkoutDate)
             makeBooking(token, bd, cd, user, cid)
     }

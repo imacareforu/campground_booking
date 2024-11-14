@@ -16,7 +16,7 @@ export default function TopMenu() {
             <Image src={'/img/logo.png'} className='h-auto w-auto max-h-[70px]' alt='logo' width={0} height={0} sizes="100vh"/>
             </Link>
             <div className='flex flex-row w-1/2'>
-                <TopMenuItem title='Select Car' pageRef='/camp'/>
+                <TopMenuItem title='Select Campground' pageRef='/camp'/>
                 <TopMenuItem title='Booking' pageRef='/booking'></TopMenuItem>
                 <TopMenuItem title='Cart' pageRef='/cart' />
                 <TopMenuItem title='About' pageRef='/about'></TopMenuItem>

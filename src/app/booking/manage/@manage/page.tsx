@@ -34,8 +34,8 @@ export default async function ManagePage() {
         }
         catch(error) {console.log(error)}
 
-        revalidateTag('cars')
-        redirect('/car')
+        revalidateTag('campground')
+        redirect('/camp')
     }
 
     const session = await getServerSession(authOption)
