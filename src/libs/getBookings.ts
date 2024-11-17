@@ -1,4 +1,4 @@
-export default async function getBookings(token:string|undefined) {
+export default async function getBookings(token:string) {
 
     const response = await fetch("https://campground-backend-kappa.vercel.app:443/api/v1/bookings",{
         method:"GET",

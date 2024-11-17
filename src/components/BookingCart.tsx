@@ -1,32 +1,14 @@
-import { AppDispatch, useAppSelector } from "@/redux/store";
-import { BookingItem } from "../../interface";
-import { useDispatch } from "react-redux";
-import { Button } from "@mui/material";
-import { removeBooking } from "@/redux/features/cartSlice";
+'use client'
+
+import { BookingItem, BookingJson, CampgroundJson } from "../../interface";
 import getBookings from "@/libs/getBookings";
-import { useSession } from "next-auth/react";
-import getCampgrounds from "@/libs/getCampgrounds";
 import { getServerSession } from "next-auth";
 import { authOption } from "@/app/api/auth/[...nextauth]/AuthOption";
-import getCampground from "@/libs/getCampground";
 import RemoveBookingButton from "./RemoveBookingButton";
-import { useRouter } from "next/navigation";
-import deleteBooking from "@/libs/deleteBooking";
-import { revalidateTag } from "next/cache";
+import { useSession } from "next-auth/react";
+import EditBookingButton from "./EditBookingButton";
 
-
-export default async function BookingCart() {
-    
-
-    const session = await getServerSession(authOption)
-    const bookings =  await getBookings(session?.user.token)
-    
-    async function getC(id:string){
-        const camp = await getCampground(id)
-        return camp.data.name
-    }
-    
-    
+export default function BookingCart({bookings,userRole,userToken}:{bookings:BookingJson,userRole:string,userToken:string}) {
 
     return (
         <>
@@ -34,11 +16,13 @@ export default async function BookingCart() {
         {
             (bookings.count==0)? <p className="text-center">No campground booking</p>:
             bookings.data.map((item:BookingItem)=>(
-                <div className="rounded bg-slate-200 px-5 mx-5 py-2 my-2">
-                    <div className="text-sm">{item.campground.name}</div>
+                <div className="rounded bg-slate-200 px-5 mx-5 py-2 my-2 space-y-1" key={item._id}>
+                    <div className="font-medium">{item.campground.name}</div>
+                    {(userRole=='admin')? <div className="text-sm">user : {item.user}</div>:null}
                     <div className="text-sm">Booking Date : {item.bookingDate.substring(0, 10)}</div>
                     <div className="text-sm">Checkout Date : {item.checkoutDate.substring(0, 10)}</div>
-                    <RemoveBookingButton bid={item._id}/>
+                    <RemoveBookingButton bid={item._id} userToken={userToken}/>
+                    <EditBookingButton bid={item._id} userToken={userToken}/>
                 </div>
             ))
         }

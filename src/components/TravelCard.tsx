@@ -1,9 +1,6 @@
 'use client'
 
-import VlogPlayer from "./VlogPlayer"
 import { useState } from "react"
-import { Rating } from "@mui/material"
-import useWindowListener from "@/hooks/useWindowListener"
 import { useRouter } from "next/navigation"
 
 export default function TravelCard() {
@@ -12,7 +9,7 @@ export default function TravelCard() {
 
     return(
         <div className="w-4/5 shadow-lg mx-[10%] my-10 p-2 bg-gray-100 flex flex-rox">
-            <VlogPlayer vdoSrc="/video/Sunrise.mp4" isPlaying={playing}/>
+            <video className="w-3/5" src="/video/Sunrise.mp4" controls autoPlay loop muted/>
             <div className="flex flex-col px-4 py-2">
                 <p>Thailand Nature</p>
                 <button onClick={(e)=>{e.stopPropagation();router.push('/camp')}}

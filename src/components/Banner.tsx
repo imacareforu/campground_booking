@@ -14,10 +14,9 @@ export default function Banner() {
 
     return (
         <div className='p-2 block relative h-[55vh] text-shadow-2 font-sans' onClick={()=>setIndex(index+1)}>
-            <Image className="brightness-75" src={covers[index%3]} alt='cover' fill={true} priority objectFit='cover'></Image>
+            <Image className="brightness-75 object-cover" src={covers[index%3]} alt='cover' fill={true} priority></Image>
             <div className='text-center z-20 m-12 relative'>
                 <h1 className='text-[120px] text-white font-medium tracking-widest drop-shadow-2xl font-sans'>BOOKCAMPER</h1>
-                {/* <h3 className='text-lg text-white'>Book Your Outdoor Adventure</h3> */}
             </div>
             {session? 
                 <div className='absolute right-5 top-2 text-white tracking-wider font-semibold text-xl'>

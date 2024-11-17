@@ -1,4 +1,4 @@
-import ReservationMenu from "@/components/BookingMenu";
+import ReservationMenu from "@/components/BookingSubMenu";
 import { render, screen } from "@testing-library/react"
 import Banner from "@/components/Banner";
 import { userEvent } from "@testing-library/user-event"

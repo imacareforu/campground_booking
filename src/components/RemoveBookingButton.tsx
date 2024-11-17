@@ -1,23 +1,15 @@
-"use client"
 import deleteBooking from "@/libs/deleteBooking"
-import { useSession } from "next-auth/react"
-import { redirect } from "next/navigation"
-import { revalidatePath, revalidateTag } from "next/cache"
 import { useRouter } from "next/navigation"
 
-export default function RemoveBookingButton({bid}:{bid:string}) {
-    const session = useSession()
-    const token = session.data?.user.token
+export default function RemoveBookingButton({bid,userToken}:{bid:string,userToken:string}) {
     const router = useRouter()
+
     async function remove(bid:string){
-        await deleteBooking(token, bid)
+        await deleteBooking(userToken, bid)
         router.refresh()
     }
  
-
-
-    
     return (
-        <button onClick={()=>{remove(bid);}} >remove</button>
+        <button className='bg-sky-200 border-sky-400 border-2 px-2 rounded-lg' onClick={()=>{remove(bid)}}>remove</button>
     )
 }

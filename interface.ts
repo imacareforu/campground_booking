@@ -6,6 +6,12 @@ export interface BookingItem {
     campground:CampgroundItem
 }
 
+export interface BookingJson {
+  success: boolean,
+  count: number,
+  data: BookingItem[]
+}
+
 export interface CampgroundJson {
   success: boolean,
   count: number,
@@ -14,7 +20,7 @@ export interface CampgroundJson {
 }
 
 export interface CampgroundItem {
-    _id : string
+    _id : string,
     name: string,
     address: string,
     district: string,
@@ -22,4 +28,14 @@ export interface CampgroundItem {
     postalcode: string,
     tel: string,
     picture: string
+}
+
+export interface UserItem {
+  _id : string,
+  name : string,
+  email : string,
+  tel : string,
+  role : string,
+  password : string,
+  createAt : Date
 }

@@ -1,4 +1,4 @@
-export default async function deleteBooking(token:string|undefined, bookingId:string) {
+export default async function deleteBooking(token:string, bookingId:string) {
     const response = await fetch(`https://campground-backend-kappa.vercel.app:443/api/v1/bookings/${bookingId}`,{
         method: "DELETE",
         headers:{
@@ -8,6 +8,5 @@ export default async function deleteBooking(token:string|undefined, bookingId:st
     })
 
     if(!response.ok) throw new Error(`failed to delete booking ${response.status}`)
-    if(!token) throw new Error("cannot find token")
     return await response.json()
 }

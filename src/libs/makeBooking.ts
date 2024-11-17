@@ -1,4 +1,4 @@
-export default async function makeBooking(token:string|undefined,bookingDate:Date, checkoutDate:Date, user:string|undefined, campground:string|null) {
+export default async function makeBooking(token:string,bookingDate:Date, checkoutDate:Date, user:string, campground:string) {
     const response = await fetch(`https://campground-backend-kappa.vercel.app:443/api/v1/campgrounds/${campground}/bookings`,{
         method: "POST",
         headers:{

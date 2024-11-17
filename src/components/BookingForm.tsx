@@ -13,58 +13,47 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import { Button } from "@mui/material";
 import { CampgroundItem, CampgroundJson } from "../../interface";
-import LacationDateReserve from "@/components/LoactionDateReserve";
-import { AppDispatch } from "@/redux/store";
+import LocationDateReserve from "@/components/LocationDateReserve";
 import dayjs, { Dayjs } from "dayjs";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { BookingItem } from "../../interface";
-import { addBooking } from "@/redux/features/cartSlice";
-import TextField from '@mui/material/TextField';
-import getCampgrounds from "@/libs/getCampgrounds";
 import makeBooking from "@/libs/makeBooking";
 import { useSession } from "next-auth/react";
-import { SearchSharp } from "@mui/icons-material";
 
 export default function BookingForm({ campgroundJson }: { campgroundJson: CampgroundJson }) {
     const [open, setOpen] = React.useState(false);
 
     const urlParams = useSearchParams()
-
+    const cidFromURL = urlParams.get('id')
     const campgroundFromURL = urlParams.get('campground')
 
     const {data:session} = useSession()
-    const user = session?.user._id
-    const token = session?.user.token
-
 
     const [bookingDate, setBookingDate] = useState<Dayjs | null>(null)
     const [checkoutDate, setCheckoutDate] = useState<Dayjs | null>(null)
     const [campground, setCampground] = useState<string>('')
-    const [cid, setCid] = useState<string | null>(urlParams.get('id'))
+    const [cid, setCid] = useState<string>('')
 
-    React.useEffect(() => {
-        if (campgroundFromURL) setCampground(campgroundFromURL)
-    }, [campgroundFromURL])
-
-
-
+    React.useEffect(()=>{
+        if(cidFromURL) setCid(cidFromURL)
+        if(campgroundFromURL) setCampground(campgroundFromURL)
+    },[campgroundFromURL,cidFromURL])
  
-    function booking() :any{
-        if (!cid) console.log('please select campground!')
-        else if (!bookingDate) console.log('please select booking date!')
-        else if (!checkoutDate) console.log('please select checkout date!')
-        const bd = dayjs(bookingDate, "YYYY-MM-DD").toDate()
-        const cd = dayjs(checkoutDate, "YYYY-MM-DD").toDate()
-        if (campground && bookingDate && checkoutDate)
-            makeBooking(token, bd, cd, user, cid)
+    async function booking() {
+        if(!session || !session.user.token) alert('please sign-in to make booking')
+        else if (!cid) alert('please select campground!')
+        else if (!bookingDate) alert('please select booking date!')
+        else if (!checkoutDate) alert('please select checkout date!')
+        else {
+            const bd = dayjs(bookingDate, "YYYY-MM-DD").toDate()
+            const cd = dayjs(checkoutDate, "YYYY-MM-DD").toDate()
+            await makeBooking(session.user.token, bd, cd, session.user._id, cid)
+        }
     }
-
 
     return (
         <div className="bg-orange-100 p-5 rounded-xl m-12">
-            <div className='text-xl font-medium'>New Booking</div>
+            <div className='text-2xl font-medium mb-4'>New Booking</div>
             <button onClick={() => setOpen(true)} className="block w-full text-black hover:bg-slate-50">{campground ? campground : "No Campground Select!"}</button>
             <Dialog open={open} onClose={() => setOpen(false)}>
                 <DialogTitle>please select campground</DialogTitle>
@@ -92,8 +81,8 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
                 </DialogActions>
             </Dialog>
             <div className="flex flex-row">
-                <LacationDateReserve label="Check-In Date" onDateChange={(value: Dayjs) => setBookingDate(value)} id="" />
-                <LacationDateReserve label="Check-Out Date" onDateChange={(value: Dayjs) => setCheckoutDate(value)} id=""/>
+                <LocationDateReserve label="Check-In Date" onDateChange={(value: Dayjs) => setBookingDate(value)} />
+                <LocationDateReserve label="Check-Out Date" onDateChange={(value: Dayjs) => setCheckoutDate(value)}/>
             </div>
             <button className='block rounded-lg bg-neutral-700 p-2 text-white hover:text-amber-500' onClick={booking}>Book</button>
         </div>
