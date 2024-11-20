@@ -24,7 +24,7 @@ export default function CampgroundForm({userToken}:{userToken:string}) {
     }
 
     return (
-        <div className="bg-lime-50 space-y-2 py-3 mx-2 border-2 rounded-lg border-lime-300">
+        <div className="bg-gray-200 space-y-2 py-3 mx-2 border-2 rounded-lg border-gray-400">
             <div className="flex">
                 <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
                 <TextField hiddenLabel placeholder="Campground Name" variant="standard" className="w-1/2" onChange={e => setName(e.target.value)} />
