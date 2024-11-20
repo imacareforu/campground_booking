@@ -6,6 +6,7 @@ export default function RemoveBookingButton({bid,userToken}:{bid:string,userToke
 
     async function remove(bid:string){
         await deleteBooking(userToken, bid)
+        alert('remove success')
         router.refresh()
     }
  

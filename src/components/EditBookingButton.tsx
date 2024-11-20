@@ -19,8 +19,8 @@ export default function EditBookingButton({bid,userToken}:{bid:string,userToken:
         const cd = dayjs(checkoutDate, "YYYY-MM-DD").toDate()
         const today = new Date()
         if(!bookingDate || !checkoutDate) alert('please select new date')
-        else if (bd < today) alert("check-in date is invalid")
-        else if (cd < today) alert("check-out date is invalid")
+        else if (bd < today) alert("check-in date is invalid \n(check-in before today)")
+        else if (cd < today || cd<bd) alert("check-out date is invalid \n(check-out before today or check-out before check-in")
         else if (checkoutDate.diff(bookingDate, "day")<1 || checkoutDate.diff(bookingDate, "day")>3) alert("can book only from 1 up to 3 nights")
         else {
             await editBooking(userToken,bid,bd,cd).then(()=>setEditing(false))
@@ -33,8 +33,8 @@ export default function EditBookingButton({bid,userToken}:{bid:string,userToken:
         <div className="inline mx-4">
             {editing? null:<button className='bg-neutral-700 border-2 px-2 rounded-full text-white hover:text-amber-500 p-1 focus:shadow-md focus:shadow-white-500' 
             onClick={() => { setEditing(!editing) }}>edit</button>}
-            {editing? <button className='bg-red-500 border-2 px-2 rounded-full p-1 hover:text-white' onClick={() => { setEditing(!editing) }}>cancal</button>:null}
-            {editing? <button className='bg-red-500 border-2 px-2 ml-4 rounded-full p-1 hover:text-white' onClick={updateBooking}>update</button>:null}
+            {editing? <button className='bg-red-600 text-white border-2 px-2 rounded-full p-1 hover:text-amber-500' onClick={() => { setEditing(!editing) }}>cancal</button>:null}
+            {editing? <button className='bg-red-600 text-white border-2 px-2 ml-4 rounded-full p-1 hover:text-amber-500' onClick={updateBooking}>update</button>:null}
             {
                 editing?
                     <div className="bg-white border-2 border-gray-400 w-fit rounded-lg mt-2">
