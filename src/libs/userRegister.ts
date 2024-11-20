@@ -12,8 +12,10 @@ export default async function userRegister(name:string,tel:string,email:string,p
             password: password,
         })
     })
-
-    if(!response.ok) throw new Error(`failed to register ${response.status}`)
+    if(!response.ok) {
+        alert("Unable to register please check your email, tel or password.")
+        throw new Error(`failed to register ${response.status}`) 
+    }
 
     return await response.json()
 }

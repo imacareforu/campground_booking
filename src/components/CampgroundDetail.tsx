@@ -14,6 +14,7 @@ export default function CampgroundDetail({ cid, campgroundDetail, admin, token }
     const [editing, setEditing] = useState(false)
     const router = useRouter()
 
+    const [name,setName] = useState(campgroundDetail.name)
     const [address,setAddress] = useState(campgroundDetail.address)
     const [district,setDistrict] = useState(campgroundDetail.district)
     const [province,setProvince] = useState(campgroundDetail.province)
@@ -27,7 +28,7 @@ export default function CampgroundDetail({ cid, campgroundDetail, admin, token }
     }
 
     async function updateCampground() {
-        await editCampground(token, cid,campgroundDetail.name, address, district, province, postalcode, tel, campgroundDetail.picture).then(()=>setEditing(false))
+        await editCampground(token, cid,name, address, district, province, postalcode, tel, campgroundDetail.picture).then(()=>setEditing(false))
         router.refresh()
     }
 
@@ -52,6 +53,10 @@ export default function CampgroundDetail({ cid, campgroundDetail, admin, token }
                 </div>
             </div>
             {editing? <div className="bg-lime-50 space-y-2 py-3 border-2 rounded-lg border-lime-300">
+                <div className="flex">
+                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.address} variant="standard" className="w-1/2" onChange={e=>setName(e.target.value)}/>
+                </div>
                 <div className="flex">
                     <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Address</label>
                     <TextField hiddenLabel defaultValue={campgroundDetail.address} variant="standard" className="w-1/2" onChange={e=>setAddress(e.target.value)}/>

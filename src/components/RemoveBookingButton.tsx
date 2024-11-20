@@ -10,6 +10,7 @@ export default function RemoveBookingButton({bid,userToken}:{bid:string,userToke
     }
  
     return (
-        <button className='bg-sky-200 border-sky-400 border-2 px-2 rounded-lg' onClick={()=>{remove(bid)}}>remove</button>
+        <button className='p-1 bg-neutral-700 text-white hover:text-amber-500 border-2 px-2 rounded-full focus:shadow-md focus:shadow-white-500' 
+        onClick={()=>{remove(bid)}}>remove</button>
     )
 }

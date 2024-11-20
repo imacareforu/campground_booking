@@ -7,7 +7,7 @@ export default function ProductCard({campgroundName, imgSrc} : {campgroundName:s
 
     return(
         <InteractiveCard>
-            <div className='w-full h-[70%] relative rounded-t-lg'>
+            <div className='w-full h-[80%] relative rounded-lg'>
                 <Image src={imgSrc} alt='Product Picture' fill={true} objectFit='contain'></Image>
             </div>
             <div className='w-full h-[15%] text-black text-center'>

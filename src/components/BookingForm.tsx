@@ -47,12 +47,19 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
         else {
             const bd = dayjs(bookingDate, "YYYY-MM-DD").toDate()
             const cd = dayjs(checkoutDate, "YYYY-MM-DD").toDate()
-            await makeBooking(session.user.token, bd, cd, session.user._id, cid)
+            const today = new Date()
+            if (bd < today) alert("check-in date is invalid")
+            else if (cd < today) alert("check-out date is invalid")
+            else if (checkoutDate.diff(bookingDate, "day")<1 || checkoutDate.diff(bookingDate, "day")>3) alert("can book only from 1 up to 3 nights")
+            else {
+                await makeBooking(session.user.token, bd, cd, session.user._id, cid)
+                alert("book success")
+            }
         }
     }
 
     return (
-        <div className="bg-orange-100 p-5 rounded-xl m-12">
+        <div className="bg-gray-100 p-5 rounded-xl m-12">
             <div className='text-2xl font-medium mb-4'>New Booking</div>
             <button onClick={() => setOpen(true)} className="block w-full text-black hover:bg-slate-50">{campground ? campground : "No Campground Select!"}</button>
             <Dialog open={open} onClose={() => setOpen(false)}>
@@ -80,11 +87,11 @@ export default function BookingForm({ campgroundJson }: { campgroundJson: Campgr
                     <Button onClick={() => setOpen(false)}>Ok</Button>
                 </DialogActions>
             </Dialog>
-            <div className="flex flex-row">
+            <div className="flex flex-row justify-center">
                 <LocationDateReserve label="Check-In Date" onDateChange={(value: Dayjs) => setBookingDate(value)} />
                 <LocationDateReserve label="Check-Out Date" onDateChange={(value: Dayjs) => setCheckoutDate(value)}/>
             </div>
-            <button className='block rounded-lg bg-neutral-700 p-2 text-white hover:text-amber-500' onClick={booking}>Book</button>
+            <button className='block rounded-full bg-neutral-700 p-2 text-white hover:text-amber-500' onClick={booking}>Book</button>
         </div>
     )
 }
