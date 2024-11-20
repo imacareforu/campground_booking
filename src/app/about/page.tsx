@@ -1,6 +1,3 @@
-import UserDateil from "@/components/UserDetail";
-import UploadButton from "@/components/UploadButton";
-
 export default function About() {
 
     return(
