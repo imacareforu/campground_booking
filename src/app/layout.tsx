@@ -5,7 +5,6 @@ import TopMenu from "@/components/TopMenu";
 import { getServerSession } from "next-auth";
 import { authOption } from "./api/auth/[...nextauth]/AuthOption";
 import NextAuthProvider from "@/providers/NextAuthProvider";
-import ReduxProvider from "@/redux/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +25,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReduxProvider>
-          <NextAuthProvider session={Session}>
-            <TopMenu/>
-            {children}
-          </NextAuthProvider>
-        </ReduxProvider>
+        <NextAuthProvider session={Session}>
+          <TopMenu/>
+          {children}
+        </NextAuthProvider>
       </body>
     </html>
   );

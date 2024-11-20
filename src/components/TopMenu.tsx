@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import TopMenuItem from './TopMenuItem';
-import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Link from "next/link";
 

@@ -1,11 +1,7 @@
 'use client'
 
-import { BookingItem, BookingJson, CampgroundJson } from "../../interface";
-import getBookings from "@/libs/getBookings";
-import { getServerSession } from "next-auth";
-import { authOption } from "@/app/api/auth/[...nextauth]/AuthOption";
+import { BookingItem, BookingJson } from "../../interface";
 import RemoveBookingButton from "./RemoveBookingButton";
-import { useSession } from "next-auth/react";
 import EditBookingButton from "./EditBookingButton";
 
 export default function BookingCart({bookings,userRole,userToken}:{bookings:BookingJson,userRole:string,userToken:string}) {

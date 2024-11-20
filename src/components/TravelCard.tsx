@@ -1,10 +1,8 @@
 'use client'
 
-import { useState } from "react"
 import { useRouter } from "next/navigation"
 
 export default function TravelCard() {
-    const [playing,setPlayer] = useState(true)
     const router = useRouter()
 
     return(
