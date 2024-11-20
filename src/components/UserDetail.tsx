@@ -2,7 +2,7 @@ import { authOption } from "@/app/api/auth/[...nextauth]/AuthOption";
 import getUserProfile from "@/libs/getUserProfile";
 import { getServerSession } from "next-auth";
 
-export default async function UserDatail() {
+export default async function UserDetail() {
     const session = await getServerSession(authOption)
 
     if (!session) {

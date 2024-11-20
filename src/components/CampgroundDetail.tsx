@@ -54,30 +54,30 @@ export default function CampgroundDetail({ cid, campgroundDetail, admin, token }
                         </div> : null}
                 </div>
             </div>
-            {editing? <div className="bg-gray-200 space-y-2 py-3 border-2 rounded-lg border-gray-400">
+            {editing? <div className="bg-gray-200 space-y-2 py-3 border-2 rounded-lg border-gray-400 w-1/2 justify-self-center">
                 <div className="flex">
-                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
-                    <TextField hiddenLabel defaultValue={campgroundDetail.name} variant="standard" className="w-1/2" onChange={e=>setName(e.target.value)}/>
+                    <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.name} variant="standard" className="w-2/3" onChange={e=>setName(e.target.value)}/>
                 </div>
                 <div className="flex">
-                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Address</label>
-                    <TextField hiddenLabel defaultValue={campgroundDetail.address} variant="standard" className="w-1/2" onChange={e=>setAddress(e.target.value)}/>
+                    <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Address</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.address} variant="standard" className="w-2/3" onChange={e=>setAddress(e.target.value)}/>
                 </div>
                 <div className="flex">
-                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">District</label>
-                    <TextField hiddenLabel defaultValue={campgroundDetail.district} variant="standard" className="w-1/2" onChange={e=>setDistrict(e.target.value)}/>
+                    <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">District</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.district} variant="standard" className="w-2/3" onChange={e=>setDistrict(e.target.value)}/>
                 </div>
                 <div className="flex">
-                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Province</label>
-                    <TextField hiddenLabel defaultValue={campgroundDetail.province} variant="standard" className="w-1/2" onChange={e=>setProvince(e.target.value)}/>
+                    <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Province</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.province} variant="standard" className="w-2/3" onChange={e=>setProvince(e.target.value)}/>
                 </div>
                 <div className="flex">
-                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Postal Code</label>
-                    <TextField hiddenLabel defaultValue={campgroundDetail.postalcode} variant="standard" className="w-1/2" onChange={e=>setPostalcode(e.target.value)}/>
+                    <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Postal Code</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.postalcode} variant="standard" className="w-2/3" onChange={e=>setPostalcode(e.target.value)}/>
                 </div>
                 <div className="flex">
-                    <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Telephone</label>
-                    <TextField hiddenLabel defaultValue={campgroundDetail.tel} variant="standard" className="w-1/2" onChange={e=>setTel(e.target.value)}/>
+                    <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Telephone</label>
+                    <TextField hiddenLabel defaultValue={campgroundDetail.tel} variant="standard" className="w-2/3" onChange={e=>setTel(e.target.value)}/>
                 </div>
                 <Button variant="contained" onClick={updateCampground}>update</Button>
             </div> : null}

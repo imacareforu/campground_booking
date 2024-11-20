@@ -12,8 +12,8 @@ export default async function DashboardPage() {
     var createdAt = new Date(profile.data.createdAt)
 
     return(
-        <main className='bg-slate-100 m-2 p-2 rounded'>
-            <div className="text-left text-2xl px-2 font-semibold">{profile.data.name}</div>
+        <main className='bg-slate-100 m-2 p-2 rounded w-2/3 mr-auto ml-auto'>
+            <div className="text-left text-xl px-2 font-semibold">{profile.data.name}</div>
             <table className="table-auto text-left font-extralight m-2">
                 <tbody>
                     <tr>

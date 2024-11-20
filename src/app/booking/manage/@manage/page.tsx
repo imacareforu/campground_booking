@@ -1,15 +1,15 @@
 import { authOption } from "@/app/api/auth/[...nextauth]/AuthOption"
 import getUserProfile from "@/libs/getUserProfile"
 import { getServerSession } from "next-auth"
-import UserDatail from "@/components/UserDetail"
 import CampgroundForm from "@/components/CampgroundForm"
+import UserDetail from "@/components/UserDetail"
 
 export default async function ManagePage() {
 
     const session = await getServerSession(authOption)
 
     if (!session || !session.user.token) return (
-        <UserDatail/>
+        <UserDetail/>
     )
 
     const profile = await getUserProfile(session.user.token)

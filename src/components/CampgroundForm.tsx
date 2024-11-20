@@ -24,34 +24,34 @@ export default function CampgroundForm({userToken}:{userToken:string}) {
     }
 
     return (
-        <div className="bg-gray-200 space-y-2 py-3 mx-2 border-2 rounded-lg border-gray-400">
+        <div className="bg-gray-200 space-y-2 py-3 mx-2 border-2 rounded-lg border-gray-400 w-2/3 mr-auto ml-auto">
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
-                <TextField hiddenLabel placeholder="Campground Name" variant="standard" className="w-1/2" onChange={e => setName(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
+                <TextField hiddenLabel placeholder="Campground Name" variant="standard" className="w-2/3" onChange={e => setName(e.target.value)} />
             </div>
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Address</label>
-                <TextField hiddenLabel placeholder="Campground Address" variant="standard" className="w-1/2" onChange={e => setAddress(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Address</label>
+                <TextField hiddenLabel placeholder="Campground Address" variant="standard" className="w-2/3" onChange={e => setAddress(e.target.value)} />
             </div>
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">District</label>
-                <TextField hiddenLabel placeholder="District" variant="standard" className="w-1/2" onChange={e => setDistrict(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">District</label>
+                <TextField hiddenLabel placeholder="District" variant="standard" className="w-2/3" onChange={e => setDistrict(e.target.value)} />
             </div>
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Province</label>
-                <TextField hiddenLabel placeholder="Province" variant="standard" className="w-1/2" onChange={e => setProvince(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Province</label>
+                <TextField hiddenLabel placeholder="Province" variant="standard" className="w-2/3" onChange={e => setProvince(e.target.value)} />
             </div>
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Postal Code</label>
-                <TextField hiddenLabel placeholder="Postalcode (not exceed 5 digits)" variant="standard" className="w-1/2" onChange={e => setPostalcode(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Postal Code</label>
+                <TextField hiddenLabel placeholder="Postalcode (not exceed 5 digits)" variant="standard" className="w-2/3" onChange={e => setPostalcode(e.target.value)} />
             </div>
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Telephone</label>
-                <TextField hiddenLabel placeholder="Telephone" variant="standard" className="w-1/2" onChange={e => setTel(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">Telephone</label>
+                <TextField hiddenLabel placeholder="Telephone" variant="standard" className="w-2/3" onChange={e => setTel(e.target.value)} />
             </div>
             <div className="flex">
-                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">picture</label>
-                <TextField hiddenLabel placeholder="https://drive.google.com/uc?id=??????????????????????????" variant="standard" className="w-1/2" onChange={e => setPic(e.target.value)} />
+                <label className="text-left px-10 mt-auto mb-auto w-40 text-lime-900 pr-4">picture</label>
+                <TextField hiddenLabel placeholder="https://drive.google.com/uc?id=??????????????????????????" variant="standard" className="w-2/3" onChange={e => setPic(e.target.value)} />
             </div>
             <Button variant="contained" onClick={createCampground}>create</Button>
         </div>
