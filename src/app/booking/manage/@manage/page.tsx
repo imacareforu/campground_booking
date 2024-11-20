@@ -21,6 +21,6 @@ export default async function ManagePage() {
     )
 
     return(
-        <CampgroundForm/>
+        <CampgroundForm userToken={session.user.token}/>
     )
 }

@@ -1,49 +1,59 @@
-import InputAndLabel from "./InputAndLabel";
-import Campground from "@/db/models/Campground";
-import { dbConnect } from "@/db/dbConnect";
-import { revalidateTag } from "next/cache"
-import { redirect } from "next/navigation"
+'use client'
 
-export default function CampgroundForm(){
-    const addCampground = async (addCarForm:FormData) => {
-        'use server'
-        const name = addCarForm.get('name')
-        const address = addCarForm.get('address')
-        const district = addCarForm.get('district')
-        const province = addCarForm.get('province')
-        const postalcode = addCarForm.get('postalcode')
-        const tel = addCarForm.get('tel')
-        const picture = addCarForm.get('picture')
+import { useRouter } from "next/navigation"
+import { Button } from "@mui/material";
+import { useState } from "react";
+import TextField from "@mui/material/TextField";
+import makeCampground from "@/libs/makeCampground";
 
-        try{
-            await dbConnect()
-            await Campground.create({
-                'name' : name,
-                'address' : address,
-                'district' : district,
-                'province' : province,
-                'postalcode' : postalcode,
-                'tel' : tel,
-                'picture' : picture
-            })
-        }
-        catch(error) {console.log(error)}
+export default function CampgroundForm({userToken}:{userToken:string}) {
+    const [name, setName] = useState('')
+    const [address, setAddress] = useState('')
+    const [district, setDistrict] = useState('')
+    const [province, setProvince] = useState('')
+    const [postalcode, setPostalcode] = useState('')
+    const [tel, setTel] = useState('')
+    const [pic,setPic] = useState('')
 
-        revalidateTag('campground')
-        redirect('/campground')
+    const router = useRouter()
+
+    async function createCampground() {
+        await makeCampground(userToken,name, address, district, province, postalcode, tel, pic)
+        alert('create success')
+        router.push('/campground')
     }
 
-    return(
-        <form className="bg-sky-100 p-3 mx-2 rounded-lg" action={addCampground}>
-            <div className="text-xl text-left text-blue-700">Create Campground</div>
-            <InputAndLabel label="Name" placeHolder="Campground Name" id='name'/>
-            <InputAndLabel label="Address" placeHolder="Campground Address" id='address'/>
-            <InputAndLabel label="District" placeHolder="District" id="district"/>
-            <InputAndLabel label="Province" placeHolder="Province" id="province"/>
-            <InputAndLabel label="Postalcode" placeHolder="Postalcode (not exceed 5 digits)" id="postalcode"/>
-            <InputAndLabel label="Tel" placeHolder="Telephone" id="tel"/>
-            <InputAndLabel label="Picture" placeHolder="https://drive.google.com/uc?id=??????????????????????????" id='picture' />
-            <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white p-2 mb-5 rounded">Add New Campground</button>
-        </form>
+    return (
+        <div className="bg-lime-50 space-y-2 py-3 mx-2 border-2 rounded-lg border-lime-300">
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Name</label>
+                <TextField hiddenLabel placeholder="Campground Name" variant="standard" className="w-1/2" onChange={e => setName(e.target.value)} />
+            </div>
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Address</label>
+                <TextField hiddenLabel placeholder="Campground Address" variant="standard" className="w-1/2" onChange={e => setAddress(e.target.value)} />
+            </div>
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">District</label>
+                <TextField hiddenLabel placeholder="District" variant="standard" className="w-1/2" onChange={e => setDistrict(e.target.value)} />
+            </div>
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Province</label>
+                <TextField hiddenLabel placeholder="Province" variant="standard" className="w-1/2" onChange={e => setProvince(e.target.value)} />
+            </div>
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Postal Code</label>
+                <TextField hiddenLabel placeholder="Postalcode (not exceed 5 digits)" variant="standard" className="w-1/2" onChange={e => setPostalcode(e.target.value)} />
+            </div>
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">Telephone</label>
+                <TextField hiddenLabel placeholder="Telephone" variant="standard" className="w-1/2" onChange={e => setTel(e.target.value)} />
+            </div>
+            <div className="flex">
+                <label className="mt-auto mb-auto w-40 text-lime-900 pr-4">picture</label>
+                <TextField hiddenLabel placeholder="https://drive.google.com/uc?id=??????????????????????????" variant="standard" className="w-1/2" onChange={e => setPic(e.target.value)} />
+            </div>
+            <Button variant="contained" onClick={createCampground}>create</Button>
+        </div>
     )
 }
